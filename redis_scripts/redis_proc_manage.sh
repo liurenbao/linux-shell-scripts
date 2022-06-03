@@ -50,7 +50,7 @@ log_output() {
             echo -ne "[${LOG_DATE}]  [\033[46;5;1mDEBUG\033[0m]\t ${2}\n"
             # printf "[%s]  [\033[46;5;1mDEBUG\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
         ;;
-        '*')
+        *)
             # 未定义日志
             echo -ne "[${LOG_DATE}]  [\033[1;37mUNKNOWN\033[0m]\t ${2}\n"
             # printf "[%s]  [\033[1;37mUNKNOWN\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
@@ -161,7 +161,7 @@ for port in "${REDIS_PORT_ARRAY[@]}"; do
                 status "${port}"
                 # log_output 'debug' "status is ${port}"
             ;;
-            '*')
+            *)
                 log_output 'error' "\"${OPERATION}\" 不是一个有效的操作"
                 exit 1
             ;;
