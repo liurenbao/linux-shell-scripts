@@ -1,10 +1,8 @@
 workspace.code-workspace
 .vscode
 
-redis_scripts/test.sh
-
 nginx_scripts/nginx-1.20.1.tar.gz
 
-
+*test*.*
 
 
