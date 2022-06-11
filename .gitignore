@@ -1,8 +1,20 @@
+# vscode 文件
 workspace.code-workspace
 .vscode
 
-nginx_scripts/nginx-1.20.1.tar.gz
-
+# 测试文件
 *test*.*
 
+# 压缩包
+*.tar
+*.tar.gz
+*.zip
+*.gz
 
+# 系统软件包
+*.rpm
+*.deb
+*.apk
+
+# rabbitmq 插件文件
+*.ez

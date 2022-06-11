@@ -4,9 +4,8 @@ WORKDIR=$(cd $(dirname ${0});pwd)
 
 VERSION='8u211'
 JDK_ARCHIVE_NAME="jdk-${VERSION}-linux-x64.tar.gz"
-INSTALL_DIR='/usr/local'
-
 JDK_ARCHIVE_PATH="${WORKDIR}/${JDK_ARCHIVE_NAME}"
+INSTALL_DIR='/usr/local'
 ERROR_LOG_FILE='/tmp/'"$(echo $(basename ${0}) |sed 's/\..*$//g')"'_'"$(date +"%F_%T")"'.log'
 
 
@@ -29,7 +28,7 @@ if [ "${1}" != '--java-f' ]; then
 else
     log_output 'warn' "java 已经存在, 将进行覆盖安装 !"
 fi
-log_output 'step.' "正在解压 ${JDK_ARCHIVE_PATH}"
+log_output 'step.' "正在解压 ${JDK_ARCHIVE_NAME}"
 if ! tar -xvf "${JDK_ARCHIVE_PATH}" -C "${INSTALL_DIR}" >/dev/null 2>>"${ERROR_LOG_FILE}"; then
     log_output 'error_file' "解压失败"
     exit 1

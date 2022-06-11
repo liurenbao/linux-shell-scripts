@@ -121,7 +121,7 @@ JAVA_OPT="${JAVA_OPT} --logging.config=${BASE_DIR}/conf/nacos-logback.xml"
 JAVA_OPT="${JAVA_OPT} --server.max-http-header-size=524288"
 
 if [ ! -d "${BASE_DIR}/logs" ]; then
-  mkdir ${BASE_DIR}/logs
+  su -s /bin/bash -c "mkdir ${BASE_DIR}/logs" nacos
 fi
 
 echo "$JAVA $JAVA_OPT_EXT_FIX ${JAVA_OPT}"
@@ -134,7 +134,7 @@ fi
 
 # check the start.out log output file
 if [ ! -f "${BASE_DIR}/logs/start.out" ]; then
-  touch "${BASE_DIR}/logs/start.out"
+  su -s /bin/bash -c "touch ${BASE_DIR}/logs/start.out" nacos
 fi
 # start
 echo "$JAVA $JAVA_OPT_EXT_FIX ${JAVA_OPT}" > ${BASE_DIR}/logs/start.out 2>&1 &

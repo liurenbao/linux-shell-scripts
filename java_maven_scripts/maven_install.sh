@@ -4,17 +4,12 @@ WORKDIR=$(cd $(dirname ${0});pwd)
 
 VERSION='3.8.5'
 MAVEN_ARCHIVE_NAME="apache-maven-${VERSION}-bin.tar.gz"
+MAVEN_ARCHIVE_PATH="${WORKDIR}/${MAVEN_ARCHIVE_NAME}"
 INSTALL_DIR='/usr/local'
 LOCAL_REPO_NAME='repository'
-
-MAVEN_ARCHIVE_PATH="${WORKDIR}/${MAVEN_ARCHIVE_NAME}"
 ERROR_LOG_FILE='/tmp/'"$(echo $(basename ${0}) |sed 's/\..*$//g')"'_'"$(date +"%F_%T")"'.log'
 
-# echo "${MAVEN_ARCHIVE_NAME%-bin*}"
-
-
 source "${WORKDIR}/tools"
-
 
 exist_check() {
     if which mvn &>/dev/null; then
@@ -52,7 +47,7 @@ EOF
 log_output 'ok' "环境变量配置完成"
 log_output 'step.' "正在修改 settings.xml 配置文件"
 eval "cat <<EOF
-$(<./settings.xml)
+$(<"${WORKDIR}/settings.xml")
 EOF" >"${maven_install_path}/conf/settings.xml"
 log_output 'ok' "配置文件修改完成"
 log_output 'end' "maven-${VERSION} 部署完成. 请手动加载环境变量 /etc/profile"

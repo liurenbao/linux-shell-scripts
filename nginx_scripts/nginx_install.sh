@@ -159,7 +159,7 @@ ln -sf /usr/local/nginx/sbin/nginx /usr/sbin/nginx
 mkdir -p ${NGINX_OTHER_CONFIG_DIR}
 mkdir -p ${NGINX_STREAM_CONFIG_DIR}
 eval "cat <<EOF
-$(<./nginx.conf)
+$(<${WORK_DIR}/nginx.conf)
 EOF" >"${NGINX_CONFIG_FILE}"
 \cp -a "${NGINX_DEFAULT_SERVER_CONFIG}" "${NGINX_OTHER_CONFIG_DIR}"
 echo "<h2>$(hostname) - $(ip a |grep -w "inet" |grep -wE 'eth0|eth1|ens.*' |sed -r -n -e '1 s/^[^0-9]+([0-9\.]+).*$/\1/g p')</h2>" \
