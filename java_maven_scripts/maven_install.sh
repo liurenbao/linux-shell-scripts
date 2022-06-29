@@ -19,9 +19,9 @@ exist_check() {
 }
 
 
-if [ "${1}" != '--maven-f' ]; then
+if [ "${1}" != '-f' ]; then
     if exist_check; then
-        log_output 'error' "maven 已经安装. 如需覆盖安装使用 --maven-f 参数"
+        log_output 'error' "maven 已经安装. 如需覆盖安装使用 -f 参数"
         exit 1
     fi
 else
