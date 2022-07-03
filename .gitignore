@@ -10,6 +10,7 @@ workspace.code-workspace
 *.tar.gz
 *.zip
 *.gz
+*.tgz
 
 # 系统软件包
 *.rpm
@@ -18,3 +19,6 @@ workspace.code-workspace
 
 # rabbitmq 插件文件
 *.ez
+
+# containerd runc 忽略
+*/runc.amd64

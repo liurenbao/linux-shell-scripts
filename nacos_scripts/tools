@@ -4,7 +4,7 @@ log_output() {
     # 参数 1 : 日志类型
     # 参数 2 : 日志内容
     LOG_DATE=$(date +"%F_%T")
-    LOG_TYPE=$(echo "${1}" |tr '[A-Z]' '[a-z]')
+    LOG_TYPE=$(echo "${1}" |tr 'A-Z' 'a-z')
     case ${LOG_TYPE} in
         'error')
             # 错误日志
