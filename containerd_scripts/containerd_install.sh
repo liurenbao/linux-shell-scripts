@@ -53,8 +53,8 @@ for opt in "$@"; do
         '-f')
             FORCE=1
         ;;
-        '--nerdctl')
-            INSTALL_NERDCTL=1
+        '--no-nerdctl')
+            INSTALL_NERDCTL=0
         ;;
         '--no-crictl')
             INSTALL_CRICTL=0
