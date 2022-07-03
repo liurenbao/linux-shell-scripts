@@ -85,7 +85,7 @@ log_output() {
 
 
 log_output 'step.' "正在安装依赖包"
-yum install -y pcre-devel zlib-devel >/dev/null 2>>"${ERROR_LOG_FILE}"
+yum install -y pcre-devel zlib-devel openssl-devel >/dev/null 2>>"${ERROR_LOG_FILE}"
 [ "$?" != '0' ] && log_output 'error_file' "依赖包安装失败" && exit 1
 log_output 'ok' "依赖包安装成功"
 
@@ -138,7 +138,7 @@ cd ${NGINX_ARCHIVE_NAME%\.tar\.gz*} &>/dev/null || (log_output 'error' "进入 $
 --with-stream \
 --with-stream_realip_module \
 --with-stream_ssl_module \
---with-stream_ssl_preread_module >/dev/null 2>>"${ERROR_LOG_FILE}"
+--with-stream_ssl_preread_module >>"${ERROR_LOG_FILE}" 2>>"${ERROR_LOG_FILE}"
 [ "$?" != '0' ] && log_output 'error_file' "预编译失败" && exit 1
 log_output 'ok' "预编译成功"
 
