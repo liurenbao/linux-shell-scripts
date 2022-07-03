@@ -99,7 +99,7 @@ else
 fi
 
 log_output 'step.' "正在解压 ${NGINX_ARCHIVE_NAME}"
-tar -xvf ${NGINX_ARCHIVE_NAME} >/dev/null 2>>${ERROR_LOG_FILE}
+tar -xvf "${WORK_DIR}/${NGINX_ARCHIVE_NAME}" >/dev/null 2>>${ERROR_LOG_FILE}
 [ "$?" != '0' ] && log_output 'error_file' "解压失败" && exit 1
 log_output 'ok' "解压成功"
 

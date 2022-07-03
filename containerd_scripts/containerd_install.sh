@@ -26,7 +26,7 @@ INSTALL_DIR='/usr/local'
 ERROR_LOG_FILE='/tmp/'"$(echo $(basename ${0}) |sed 's/\..*$//g')"'_'"$(date +"%F_%T")"'.log'
 
 FORCE=0
-INSTALL_NERDCTL=0
+INSTALL_NERDCTL=1
 INSTALL_CRICTL=1
 LOCAL_REG=0
 
