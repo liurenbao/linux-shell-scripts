@@ -1,5 +1,4 @@
 #! /bin/bash
-
 pid_count=$(ps -aux |grep -w "${1}" |grep -vEc "${0}|grep")
 if [ "${pid_count}" != '0' ]; then
     exit 0
