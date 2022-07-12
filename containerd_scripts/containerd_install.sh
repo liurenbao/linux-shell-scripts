@@ -2,7 +2,7 @@
 
 WORKDIR=$(cd $(dirname ${0});pwd)
 
-CONTAINERD_ARCHIVE_NAME="containerd-1.6.1-linux-amd64.tar.gz"
+CONTAINERD_ARCHIVE_NAME="containerd-1.6.6-linux-amd64.tar.gz"
 CRICTL_ARCHIVE_NAME="crictl-v1.24.1-linux-amd64.tar.gz"
 NERDCTL_ARCHIVE_NANE="nerdctl-0.21.0-linux-amd64.tar.gz"
 CNI_ARCHIVE_NAME="cni-plugins-linux-amd64-v1.1.1.tgz"
