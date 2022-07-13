@@ -92,7 +92,6 @@ After=network.target local-fs.target
 [Service]
 ExecStartPre=-/sbin/modprobe overlay
 ExecStart=/usr/local/bin/containerd
-
 Type=notify
 Delegate=yes
 KillMode=process
