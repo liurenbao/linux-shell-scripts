@@ -149,4 +149,6 @@ if [ "${INSTALL_NERDCTL}" = '1' ]; then
     log_output 'ok' "nerdctl 部署成功"
 fi
 
+systemctl --now enable containerd
+
 log_output 'end' "containerd 部署成功"
