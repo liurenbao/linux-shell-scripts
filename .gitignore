@@ -1,5 +1,5 @@
 # vscode 文件
-workspace.code-workspace
+*.code-workspace
 .vscode
 
 # 测试文件
