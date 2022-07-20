@@ -46,6 +46,7 @@ log_output 'step.' "正在安装 docker-compose"
 \cp ${WORKDIR}/${DOCKER_COMPOSE_NAME} ${BIN_INSTALL_DIR}/docker-compose 1>/dev/null
 chmod a+x ${BIN_INSTALL_DIR}/docker-compose
 log_output 'step.' "配置镜像加速"
+mkdir -p /etc/docker
 {
 tee /etc/docker/daemon.json <<EOF
 {
