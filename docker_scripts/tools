@@ -1,0 +1,73 @@
+#! /bin/bash
+
+log_output() {
+    # 参数 1 : 日志类型
+    # 参数 2 : 日志内容
+    LOG_DATE=$(date +"%F_%T")
+    LOG_TYPE=$(echo "${1}" |tr 'A-Z' 'a-z')
+    case ${LOG_TYPE} in
+        'error')
+            # 错误日志
+            echo -ne "[${LOG_DATE}]  [\033[1;5;31mERROR\033[0m]\t ${2}\n"
+            # printf "[%s]  [\033[1;5;31mERROR\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
+        ;;
+        'error_end')
+            # 错误日志
+            echo -ne "[${LOG_DATE}]  [\033[1;5;31mERROR\033[0m]\t ${2}"
+            # printf "[%s]  [\033[1;5;31mERROR\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
+        ;;
+        'error_file')
+            # 错误日志
+            echo -ne "[${LOG_DATE}]  [\033[1;5;31mERROR\033[0m]\t ${2}. 日志文件位于 : ${ERROR_LOG_FILE}\n"
+            # printf "[%s]  [\033[1;5;31mERROR\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
+        ;;
+        'info')
+            # 信息日志
+            echo -ne "[${LOG_DATE}]  [\033[1;36mINFO\033[0m]\t ${2}\n"
+            # printf "[%s]  [\033[1;36mINFO\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
+        ;;
+        'warn')
+            # 警告日志
+            echo -ne "[${LOG_DATE}]  [\033[1;33mWARN\033[0m]\t ${2}\n"
+            # printf "[%s]  [\033[1;33mWARN\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
+        ;;
+        'ok')
+            # 成功、完成日志
+            echo -ne "[${LOG_DATE}]  [\033[1;32mOK\033[0m]\t ${2}\n"
+            # printf "[%s]  [\033[1;32mOK\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
+        ;;
+        'step')
+            # 步骤日志
+            echo -ne "[${LOG_DATE}]  [\033[1;37m>>>>>\033[0m]\t ${2}\n"
+            # printf "[%s]  [\033[1;37m>>>>>\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
+        ;;
+        'step.')
+            # 步骤日志
+            echo -ne "[${LOG_DATE}]  [\033[1;37m>>>>>\033[0m]\t ${2}......\n"
+            # printf "[%s]  [\033[1;37m>>>>>\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
+        ;;
+        'end')
+            # 结束日志
+            echo -ne "[${LOG_DATE}]  [\033[1;37mEND\033[0m] ${2}\n"
+            # printf "[%s]  [\033[1;37mEND\033[0m]\n" "${LOG_DATE}"
+        ;;
+        'debug')
+            # debug 日志
+            echo -ne "[${LOG_DATE}]  [\033[46;5;1mDEBUG\033[0m]\t ${2}\n"
+            # printf "[%s]  [\033[46;5;1mDEBUG\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
+        ;;
+        *)
+            # 未定义日志
+            echo -ne "[${LOG_DATE}]  [\033[1;37mUNKNOWN\033[0m]\t ${2}\n"
+            # printf "[%s]  [\033[1;37mUNKNOWN\033[0m]\t %s\n" "${LOG_DATE}" "${2}"
+        ;;
+    esac
+}
+
+
+exist_check() {
+    if \which "${1}" &>/dev/null; then
+        return 0
+    fi
+    return 1
+}

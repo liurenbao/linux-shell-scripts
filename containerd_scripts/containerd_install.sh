@@ -38,9 +38,7 @@ LOCAL_REG=0
 # )
 
 set -eu
-
 find /tmp -iname "$(echo $(basename ${0}) |sed 's/\..*$//g')*.log" -exec rm -rf {} \;
-
 source "${WORKDIR}/tools"
 
 for opt in "$@"; do
@@ -63,8 +61,8 @@ for opt in "$@"; do
             LOCAL_REG=1
         ;;
         *)
-            echo "${opt} 选项未定义"
-            # log_output 'error' "${opt} 选项未定义"
+            # echo "${opt} 选项未定义"
+            log_output 'error' "${opt} 选项未定义"
             exit 1
         ;;
     esac
